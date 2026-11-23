@@ -130,7 +130,7 @@ pip install -r requirements.txt
 Launch the web application:
 
 ```bash
-streamlit run app1.py
+py -m streamlit run app1.py
 ```
 
 The application will open in a web browser, allowing users to interact with the sequence alignment tool.

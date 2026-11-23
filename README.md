@@ -62,22 +62,25 @@ The application uses a user-defined scoring system to evaluate possible alignmen
 | Mismatch  |            -1 | Penalty for different characters |
 | Gap       |            -2 | Penalty for introducing a gap    |
 
-The scoring matrix is populated using the Needleman–Wunsch recurrence relation:
 
-[
-D[i][j]=\max
-\begin{cases}
-D[i-1][j-1]+s\\
-D[i-1][j]+g\\
-D[i][j-1]+g
-\end{cases}
-]
+The recurrence relation for the Needleman–Wunsch global sequence alignment algorithm is:
+\(F(i,j)=\max \Big(F(i-1,j-1)+S(A_{i},B_{j}),\;F(i-1,j)+d,\;F(i,j-1)+d\Big)\)
 
-Where:
+Terms & Base Cases
 
-- (D[i][j]) represents the optimal score at a matrix position.
-- (s) represents the match or mismatch score.
-- (g) represents the gap penalty.
+• F(i, j): Optimal alignment score between prefixes \(A[1..i]\) and \(B[1..j]\).
+• \(S(A_i, B_j)\): Substitution score for aligning character \(A_{i}\) with \(B_{j}\) (positive for a match, negative for a mismatch).
+• d: Linear gap penalty (typically negative when maximizing score).
+• Base cases (initialization):
+	• F(0, 0) = 0
+	• F(i, 0) = i × d for 1 ≤ i ≤ m
+	• F(0, j) = j × d for 1 ≤ j ≤ n
+
+Three Moves in the Matrix
+
+• Diagonal (\(F(i-1, j-1) + S(A_i, B_j)\)): Aligns \(A_{i}\) and \(B_{j}\) (match or mismatch).
+• Up (F(i-1, j) + d): Aligns \(A_{i}\) with a gap (-) in sequence B.
+• Left (F(i, j-1) + d): Aligns \(B_{j}\) with a gap (-) in sequence A
 
 The algorithm selects the maximum of the three possible alignment operations at each cell.
 

@@ -63,7 +63,8 @@ The application uses a user-defined scoring system to evaluate possible alignmen
 | Gap       |            -2 | Penalty for introducing a gap    |
 
 
-The recurrence relation for Needleman-Wunsch Algorithm is given as follows
+The recurrence relation for Needleman-Wunsch Algorithm is given as follows:
+
 $$
 D_{i,j} = \max
 \begin{cases}

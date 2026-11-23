@@ -35,7 +35,7 @@ pip install -r requirements.txt
 Run the following command:
 
 ```bash
-streamlit run app.py
+streamlit run app1.py
 ```
 
 The application will open in your web browser.
